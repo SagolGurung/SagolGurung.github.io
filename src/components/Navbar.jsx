@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 // Import your navLinks, logo, menu, close, etc.
 import { navLinks } from "../constants";
 import { logo, menu, close } from "../assets";
@@ -54,25 +53,27 @@ const Navbar = () => {
         </ul>
 
         {/* Center Column: Logo / Title */}
-        <div className="flex justify-center col-start-2 col-end-3">
-          <Link
-            to="/"
-            className="flex items-center gap-2"
-            onClick={() => {
-              setActive("");
-              window.scrollTo(0, 0);
-            }}
-          >
+        <div
+          className="flex justify-center col-start-2 col-end-3"
+          onClick={() => {
+            setActive("");
+            window.scrollTo({
+              top: 0,
+              behavior: "smooth", // Smooth scrolling effect
+            });
+          }}
+        >
+          <div className="flex items-center gap-2 cursor-pointer">
             <img
               src={logo}
               alt="logo"
               className="w-12 h-12 object-contain transition-transform duration-300 hover:scale-110"
             />
-            <p className="text-white text-lg font-semibold cursor-pointer">
+            <p className="text-white text-lg font-semibold">
               Sagol Gurung
               <span className="sm:inline-block hidden opacity-80"> | Fullstack Developer</span>
             </p>
-          </Link>
+          </div>
         </div>
 
         {/* Right Column: Mobile Toggle & Optional CTA */}
